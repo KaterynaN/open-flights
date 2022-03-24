@@ -3,19 +3,23 @@
 // of the page.
 
 import React from 'react'
+import { render } from "react-dom";
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import App from "../components/App";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+document.addEventListener("DOMContentLoaded", () => {
+    render(<App />, document.body.appendChild(document.createElement("div")));
+});
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-      <Router>
-          <Routes>
-              <Route path="*" element={<App/>}/>
-          </Routes>
-      </Router>,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//       <Router>
+//           <Routes>
+//               <Route path="*" element={<App/>}/>
+//           </Routes>
+//       </Router>,
+//     document.body.appendChild(document.createElement('div')),
+//   )
+// })
