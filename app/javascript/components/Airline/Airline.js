@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
-
+import Header from "./Header";
 
 
 export default function Airline () {
     const [airline,setAirline] = useState({})
     const [review, setReview] = useState({})
     const { slug } = useParams()
-    console.log(slug)
+    const [loaded, setLoaded] = useState(false)
     useEffect(() => {
         const url = `/api/v1/airlines/${slug}`
 
         axios.get(url)
-             .then(resp => setAirline(resp.data))
+             .then(resp => {
+                     setAirline(resp.data)
+                     setLoaded(true)
+             })
              .catch(resp => console.log(resp))
         //api/v1/airlines/united-airlines
         // airlines/united-airlines
@@ -21,7 +24,14 @@ export default function Airline () {
     return (
         <div className="wrapper">
             <div className="column">
-                <div className="header"></div>
+                {
+                    loaded &&
+                    <Header
+                        attributes = {airline.data.attributes}
+                        reviews = {airline.included}
+                    />
+                }
+
                 <div className="reviews"></div>
             </div>
             <div className="column">
