@@ -9,6 +9,12 @@ const customConfig = {
             tls: false,
             child_process: false
         }
+    },
+    resolve: {
+        modules: ["build-resource/js/node_modules"]
+    },
+    resolveLoader: {
+        modules: ["build-resource/js/node_modules"]
     }
 };
 
