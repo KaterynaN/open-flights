@@ -12,8 +12,8 @@
     white-space: nowrap;
 }
 
-.star-wrapper::before, .stars::before {
-    font-family: FontAwesome;
+.star-wrapper:before, .stars:before {
+    font-family: "Font Awesome 6 Free";
     content: '\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005';
-
 }
+
